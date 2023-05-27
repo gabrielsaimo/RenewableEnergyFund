@@ -9,6 +9,7 @@ import {
   Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { LineChart } from "react-native-chart-kit";
 import MenuScreen from "./modules/menu";
 
 const HomeScreen = () => {
@@ -17,6 +18,14 @@ const HomeScreen = () => {
     setExpanded(!expanded);
   };
 
+  const data = {
+    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio"],
+    datasets: [
+      {
+        data: [20, 45, 28, 80, 99],
+      },
+    ],
+  };
   return (
     <View>
       <View>
@@ -66,15 +75,47 @@ const HomeScreen = () => {
         )}
       </View>
       <View style={styles.divider} />
-      <ScrollView vertical style={{ height: 800 }}>
+      <ScrollView style={{ height: 700 }}>
         <View>
           <Text> Funds</Text>
         </View>
         <ScrollView horizontal style={{ height: 200 }}>
-          <View style={styles.cardsContainer}>
-            <View style={styles.card}>{}</View>
-            <View style={styles.card}>{}</View>
-            <View style={styles.card}>{}</View>
+          <View>
+            <View style={styles.card}>
+              <LineChart
+                data={data}
+                width={300}
+                height={200}
+                chartConfig={{
+                  backgroundColor: "#ffffff",
+                  backgroundGradientFrom: "#ffffff",
+                  backgroundGradientTo: "#ffffff",
+                  decimalPlaces: 0,
+                  color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+                  style: {
+                    borderRadius: 16,
+                  },
+                }}
+                bezier
+                style={{
+                  marginVertical: 8,
+                  borderRadius: 16,
+                }}
+                yAxisSuffix="%"
+                verticalLabelRotation={-10}
+                fromZero={true}
+                showDot={false}
+                strokeWidth={2}
+              />
+            </View>
+
+            <View style={styles.card}>
+              {/* Outra view com gráfico de linha */}
+            </View>
+
+            <View style={styles.card}>
+              {/* Outra view com gráfico de linha */}
+            </View>
           </View>
         </ScrollView>
       </ScrollView>

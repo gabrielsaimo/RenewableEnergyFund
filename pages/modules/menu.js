@@ -2,14 +2,20 @@ import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
 const MenuScreen = () => {
   const route = useRoute();
   const currentRouteName = route.name;
+  const navigation = useNavigation();
 
-  const handleHomePress = () => {};
+  const handleHomePress = () => {
+    navigation.navigate("Home");
+  };
 
-  const handleTradePress = () => {};
+  const handleTradePress = () => {
+    navigation.navigate("Trade");
+  };
 
   const handlePortfolioPress = () => {};
 
@@ -32,8 +38,19 @@ const MenuScreen = () => {
       </TouchableOpacity>
 
       <TouchableOpacity onPress={handleTradePress} style={styles.button}>
-        <Ionicons name="swap-horizontal-outline" size={24} color="#888" />
-        <Text style={styles.buttonText}>Trade</Text>
+        <Ionicons
+          name="trending-up-outline"
+          size={24}
+          color={currentRouteName === "Trade" ? "#770FDF" : "#888"}
+        />
+        <Text
+          style={[
+            styles.buttonText,
+            currentRouteName === "Trade" && styles.activeButtonText,
+          ]}
+        >
+          Trade
+        </Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={handlePortfolioPress} style={styles.button}>

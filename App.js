@@ -6,6 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 import LoginScreen from "./pages/LoginScreen";
 import SignUpScreen from "./pages/SignUpScreen";
 import HomeScreen from "./pages/Home";
+import TradeScrean from "./pages/Trade";
 
 const Stack = createStackNavigator();
 
@@ -21,6 +22,7 @@ const App = () => {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="SignUp" component={SignUpScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Trade" component={TradeScrean} />
       </Stack.Navigator>
     </NavigationContainer>
   );
